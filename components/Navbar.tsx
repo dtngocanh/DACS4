@@ -1,24 +1,26 @@
-import { sidebarLinks } from '@/constants'
-import { usePathname } from 'next/navigation'
-import React from 'react'
+import Image from 'next/image';
+import Link from 'next/link';
+
+
+import MobileNav from './MobileNav';
 
 const Navbar = () => {
-  const pathname = usePathname()
   return (
-    <section className='sticky left-0 top-0 flex h-screen w-fit flex-col justify-between bg-dark-1 p-6 pt-28 to-white max-sm:hidden lg:w-[264px]'>
-      <div className='flex flex- flex-col gap-6'>
-        {[sidebarLinks.map((link) => {
-          const isActive = pathname === link.route || pathname.startsWith(link.route)
-          return (
-            <Link>
+    <nav className="flex-between fixed z-50 w-full bg-dark-1 px-6 py-4 lg:px-10">
+      <Link href="/" className="flex items-center gap-1">
+        <Image
+          src="/icons/logo.svg"
+          width={32}
+          height={32}
+          alt="yoom logo"
+          className="max-sm:size-10"
+        />
+        <p className="text-[26px] font-extrabold text-white max-sm:hidden">
+          Linkup
+        </p>
+      </Link>
+    </nav>
+  );
+};
 
-            </Link>
-          )
-        })]}
-      </div>
-
-    </section>
-  )
-}
-
-export default Navbar
+export default Navbar;
